@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demonlist Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>👹 Demonlist Tracker</h1>
+      <p class="subtitle">
+        Basado en la API de la Pointercrate Demonlist. Selecciona demons,
+        acumula puntos y aparece en el leaderboard.
+      </p>
+    </header>
+
+    <!-- Selección / creación de cuenta -->
+    <section class="card account-card">
+      <h2>Tu cuenta</h2>
+      <div class="account-row">
+        <input
+          id="account-name"
+          type="text"
+          placeholder="Nombre de tu cuenta (ej. tu nick de GD)"
+          autocomplete="off"
+        />
+        <button id="account-btn">Entrar / Crear</button>
+      </div>
+      <div id="account-status" class="account-status hidden">
+        <span>
+          Conectado como <strong id="current-player"></strong> ·
+          <span id="current-score">0</span> puntos
+        </span>
+        <button id="logout-btn" class="ghost">Cambiar</button>
+      </div>
+    </section>
+
+    <div class="columns">
+      <!-- Buscador + lista de demons -->
+      <section class="card">
+        <h2>Buscar demon</h2>
+        <input
+          id="search"
+          type="search"
+          placeholder="Busca cualquier extreme demon del histórico…"
+          autocomplete="off"
+        />
+        <p class="hint">
+          Escribe un nombre para buscar en todo el histórico de la lista.
+          Deja el campo vacío para ver los demons del top actual.
+        </p>
+        <p id="source-note" class="source-note hidden"></p>
+        <div id="demon-list" class="demon-list">
+          <p class="placeholder">Cargando demons…</p>
+        </div>
+      </section>
+
+      <!-- Cuenta actual: demons completados -->
+      <section class="card">
+        <h2>Tus demons completados</h2>
+        <div id="my-demons" class="demon-list">
+          <p class="placeholder">Entra con una cuenta para empezar.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Leaderboard -->
+    <section class="card">
+      <h2>🏆 Leaderboard de jugadores</h2>
+      <table class="leaderboard">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jugador</th>
+            <th>Demons</th>
+            <th>Puntos</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <tr>
+            <td colspan="4" class="placeholder">Sin jugadores todavía.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
